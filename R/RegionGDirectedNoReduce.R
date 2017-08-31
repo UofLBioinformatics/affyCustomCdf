@@ -1,0 +1,70 @@
+# TODO: Add comment
+#
+# Author: Ernur
+###############################################################################
+
+#directon = 1 for same directions = 0 for opposite directions
+setGeneric("RegionGDirectedNoReduce", function(.object,geneStructure,probes)
+  standardGeneric("RegionGDirectedNoReduce"))
+
+setMethod("RegionGDirectedNoReduce", signature("affyCustomCdf"),
+          definition=function(.object,geneStructure,probes) {
+
+  chr = split(geneStructure,geneStructure$seqname)
+  chrN = length(chr)
+
+  .object@total = data.table()
+
+  # #For each chromosome
+  for(c in 1:chrN ){
+
+    chrName =names(chr)[c]
+
+    if(dim(stats::na.omit(probes[chrName]))[1] != 0){
+
+      Schr = data.frame(chr[c])
+      colnames(Schr) = c("seqname", "feature","start","end","strand","attributes")
+
+      directedGenes =  split(Schr,Schr$strand)
+      directedProbes = split(probes[chrName],probes[chrName]$direction)
+
+      #for genes on both strands
+      for(d in 1:length(directedGenes)){
+
+        if(.object@SD == 1){
+          curDirect = directedGenes[[d]]$strand[1]
+        } else{
+          curDirect = directedGenes[[((d)%%2) +1]]$strand[1]
+        }
+
+        #Are there probes on that strand?
+        if(directedProbes[curDirect] != "NULL"){
+
+          allKeys = paste(directedGenes[[d]]$attributes,
+                          directedGenes[[d]]$strand,sep="_")
+          ranges = IRanges(as.integer(directedGenes[[d]]$start),
+                           as.integer(directedGenes[[d]]$end))
+
+          query <- IRanges(directedProbes[[curDirect]]$start,
+                           directedProbes[[curDirect]]$start+.object@probeLength-1)
+          hits = findOverlaps(query, ranges,type="within",select="all")
+
+          value = directedProbes[[curDirect]]$names[S4Vectors::queryHits(hits)]
+          key = allKeys[S4Vectors::subjectHits(hits)]
+          all = data.table(keys=as.vector(key),values=value)
+
+          .object@total = rbind(.object@total,all)
+
+        }#end of if(directedProbes[d] != "NULL"
+
+      }#end of directions loop
+
+    }#end of if(dim(na.omit(probes[chrName]))[1]
+
+  }#end of for(c in 1:chrN)
+
+
+  data.table::setkeyv(.object@total,cols = "keys")
+  return(.object)
+}
+)
