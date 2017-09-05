@@ -1,7 +1,0 @@
-library("affyCustomCdf")
-pathLib = system.file(package="affyCustomCdf")
-pathLib = file.path(pathLib, "tests")
-cdf = file.path(pathLib, "Rat230_2.cdf")
-probeMap = file.path(pathLib, "rat230HG38.txt")
-gtf = file.path(pathLib, "Rattus_norvegicus.Rnor_6.0.85.gtf")
-#createAffyCustomCdf(cdf,probeMap,gtf)
