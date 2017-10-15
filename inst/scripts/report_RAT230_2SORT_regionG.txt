@@ -1,0 +1,32 @@
+Original Cdf Name:  C:/Users/Ernur/Documents/R/win-library/3.4/affyCustomCdf/scripts/Rat230_2Sort.cdf 
+Probe file name:    C:/Users/Ernur/Documents/R/win-library/3.4/affyCustomCdf/scripts/rat230HG38Short2.txt 
+Probe file name:    C:/Users/Ernur/Documents/R/win-library/3.4/affyCustomCdf/scripts/rat230HG38Short2.txt 
+Gtf File Name:  C:/Users/Ernur/Documents/R/win-library/3.4/affyCustomCdf/scripts/Rattus_norvegicus.Rnor_6.0.85Sort.gtf 
+Control probe set number:    0 
+Unit type:    3 
+Probe length:  25 
+Direction between annotatin and probe:    1 
+Type of the produced CDF:  regionG 
+Junction:    FALSE 
+Unique probe:    1 
+Number of annotation detected by probes before probe
+      sharing eliminated 4 
+Number of probe sets without control probes 2 
+Number of probes aligned to an annotation    21 
+
+TABLE: Distribution of Number of probes per probe set
+
+Probe Number | Number of Probe Set
+      10     |          1         
+      11     |          1         
+
+HISTOGRAM OF THE NUMBER OF PROBES PER PROBE SETS
+
+X: Number of probes
+Y: Number of probe sets
+Each star represent a probe set that contains indicated number of probes at the Y dimension.
+
+10  *
+11  *
+    
+    11
