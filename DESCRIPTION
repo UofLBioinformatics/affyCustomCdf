@@ -1,0 +1,48 @@
+Package: affyCustomCdf
+Type: Package
+Title: affyCustomCdf for Reanyzing Affymetrix GeneChip based on regions
+Version: 0.99.0
+Author: Ernur Saka, Benjamin J. Harrison, Kirk West, Jeffrey C. Petruska and Eric C. Rouchka
+Maintainer: Ernur Saka <ernursaka@gmail.com>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+Collate: 
+    'affyCustomCdfClassDef.R'
+    'GeneDirected.R'
+    'GeneDirectedNoReduce.R'
+    'GeneNotSameD.R'
+    'GeneNotSameDNoReduce.R'
+    'ReadGeneStructure.R'
+    'ReadProbes.R'
+    'RegionGDirected.R'
+    'RegionGDirectedNoReduce.R'
+    'RegionGNotSameD.R'
+    'RegionGNotSameDNoReduce.R'
+    'TranscriptDirected.R'
+    'TranscriptNotSameD.R'
+    'UniqueProbeGeneTranscript.R'
+    'UniqueProbeRegion.R'
+    'UniqueProbeRegionNoShare.R'
+    'UniqueProbeShareBetweenTranscript.R'
+    'WriteASCIICdf.R'
+    'affyCustomCdf.R'
+    'affyCustomCdf_package.R'
+    'createAffyCustomCdf.R'
+Depends:
+  IRanges,
+  data.table,
+  readr,
+  stringr,
+  methods,
+  S4Vectors,
+  stats
+biocViews: Annotation, Microarray, OneChannel, Preprocessing, 
+    ProprietaryPlatforms, QualityControl, Software, Transcription,
+    DifferentialExpression, GeneExpression, Infrastructure, DataImport
+RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
